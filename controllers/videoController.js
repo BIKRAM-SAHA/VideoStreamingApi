@@ -5,6 +5,9 @@ const path = require("path");
 // access: public
 const getAll = (req, res) => {
   const fileNameArray = [];
+  if (!fs.existsSync(`temp`)) {
+    fs.mkdirSync(`temp/`);
+  }
   fs.readdir(path.resolve("./temp"), (err, files) => {
     files.forEach((file) => {
       fileNameArray.push(file);
